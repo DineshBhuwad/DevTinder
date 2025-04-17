@@ -25,10 +25,16 @@ app.patch("/test",(req,res)=>{
     res.send("Patch Data send successfully...")
 })
 
-// app.use((req,res)=>{
-//     res.send("Welcome to devTinder");
-// })
+app.get("/user",(req,res)=>{
+    console.log(req.query)
+    res.send("Welcome to devTinder");
+})
 
+
+app.get("/user1/:number/:name/:password",(req,res)=>{
+    console.log(req.params)
+    res.send("Welcome to devTinder");
+})
 // app.use('/test',(req,res)=>{
 //     res.send("Hello bitchess")
 // })
