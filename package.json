@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "tinder for devs",
   "main": "index.js",
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node src/app.js",
-    "deve":"nodemon src/app.js"
+    "start": "node src/app.js",
+    "deve": "nodemon src/app.js"
   },
   "author": "Dinesh Bhuwad",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2"
   }
 }

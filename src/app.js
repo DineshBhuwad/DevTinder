@@ -1,42 +1,32 @@
-// this is the statring point of the project 
 const express = require("express")
+const connectDB = require("./config/database")
+const User = require('./models/user')
 
 const app = express()  
 
-// app.use('/dinesh',(req,res)=>{
-//     res.send("Hello from Dinesh")
-// })
+app.post("/signup", async (req,res)=>{
 
-app.get('/test',(req,res)=>{
-    res.send({firstname : "Dinesh", lastname : "Bhuwad"})
+    const user = new User({
+        firstName : 'Rohit',
+        lastName : 'Sharma',
+        age : 48,
+        email : 'abc@gmail.com',
+        password : 'Password@2',
+        gender : 'male'
+    }) 
+
+    await user.save();
+    res.send("User signed up successfully...")
 })
 
-app.post('/test',(req,res)=>{
-    //data saved successfully
-    res.send("Data saved successfully...")
-}) 
-
-app.delete('/test',(req,res)=>{
-    //data saved successfully
-    res.send("Data deleted successfully...")
+connectDB()
+.then(()=>{
+    console.log("Database connected successfully...");
+    app.listen(3000, ()=>{
+        console.log("Server started successfully at port 3000");
+    });
+})
+.catch((err)=>{
+    console.log("Database connection falled...")
 })
 
-app.patch("/test",(req,res)=>{
-    res.send("Patch Data send successfully...")
-})
-
-app.get("/user",(req,res)=>{
-    console.log(req.query)
-    res.send("Welcome to devTinder");
-})
-
-
-app.get("/user1/:number/:name/:password",(req,res)=>{
-    console.log(req.params)
-    res.send("Welcome to devTinder");
-})
-// app.use('/test',(req,res)=>{
-//     res.send("Hello bitchess")
-// })
-
-app.listen(3000);
